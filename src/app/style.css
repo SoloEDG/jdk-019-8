@@ -1,0 +1,272 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font:
+    13px -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  color: #51445f;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  padding: 9px 12px;
+  cursor: pointer;
+}
+button:hover {
+  background: #ede5fb;
+}
+.primary {
+  background: #7e56d8;
+  color: white;
+}
+header {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 55px;
+  padding: 0 25px;
+  border-bottom: 1px solid #e9e3ef;
+}
+header > div:nth-child(2) {
+  flex: 1;
+}
+header span {
+  color: #a298ac;
+  font-size: 11px;
+}
+.brand {
+  color: #7852ce;
+  font-size: 27px;
+}
+.brand small {
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-left: 12px;
+}
+.export {
+  display: flex;
+  gap: 12px;
+}
+.workspace {
+  height: calc(100vh - 72px);
+  display: flex;
+}
+.left {
+  width: 220px;
+  border-right: 1px solid #e9e3ef;
+  position: relative;
+  flex-shrink: 0;
+}
+h5 {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #a294ae;
+  margin: 27px 20px 18px;
+}
+h5 span,
+h3 span {
+  float: right;
+}
+.project {
+  background: #f3edfb;
+  padding: 14px;
+  margin: 12px;
+  border-radius: 7px;
+  color: #805bc5;
+  font-size: 11px;
+}
+nav {
+  display: flex;
+  gap: 8px;
+  padding: 16px 12px 25px;
+}
+nav button {
+  flex: 1;
+  font-size: 25px;
+}
+nav small {
+  display: block;
+  font-size: 9px;
+  margin-top: 7px;
+}
+.active {
+  background: #8055d5;
+  color: white;
+}
+.layers {
+  border-top: 1px solid #eee7f3;
+  padding: 12px;
+}
+.layers h3 {
+  font-size: 12px;
+  padding: 0 7px;
+}
+.layer-actions {
+  display: flex;
+  margin: 15px 0;
+}
+.layer-actions button {
+  font-size: 10px;
+  padding: 7px 9px;
+}
+.layer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  margin: 3px 0;
+  padding: 13px 8px;
+}
+.layer i {
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+}
+.layer span {
+  margin-left: auto;
+  color: #aaa0b5;
+}
+.chosen {
+  background: #eee5fb;
+  color: #8055ce;
+}
+.signature {
+  position: absolute;
+  bottom: 15px;
+  left: 22px;
+  font-size: 10px;
+  color: #a798b5;
+}
+main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #f0edf5;
+}
+.toolbar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  font-size: 11px;
+}
+.toolbar small {
+  color: #b3a6bf;
+}
+.stage {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-image: radial-gradient(#d9d0e2 0.7px, transparent 0.7px);
+  background-size: 12px 12px;
+}
+svg {
+  display: block;
+  flex-shrink: 0;
+  box-shadow: 0 15px 45px #49366018;
+  touch-action: none;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  height: 35px;
+  align-items: center;
+  font-size: 9px;
+  background: white;
+  color: #aa9fb5;
+  padding: 0 15px;
+}
+aside {
+  width: 235px;
+  flex-shrink: 0;
+  padding: 22px;
+  border-left: 1px solid #e9e3ef;
+}
+aside h3 {
+  font-size: 12px;
+  margin: 0 0 35px;
+}
+aside h4 {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #aa9ab5;
+  margin: 28px 0 22px;
+}
+aside label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  margin: 22px 0;
+}
+input[type="color"] {
+  width: 30px;
+  height: 26px;
+  padding: 3px;
+  border: 1px solid #eee;
+  background: white;
+  border-radius: 4px;
+}
+input[type="number"] {
+  width: 60px;
+  padding: 7px;
+  border: 1px solid #e9e3ee;
+  border-radius: 4px;
+}
+input[type="range"] {
+  width: 100px;
+  accent-color: #8055d5;
+}
+.swatches {
+  display: flex;
+  gap: 8px;
+}
+.swatches button {
+  width: 23px;
+  height: 23px;
+  padding: 0;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 1px #eee;
+}
+aside p {
+  font-size: 11px;
+  color: #a89bb2;
+}
+.tip {
+  margin-top: 80px;
+  background: #f6f0fc;
+  border-radius: 8px;
+  padding: 17px 12px;
+  color: #9476b7;
+  line-height: 2;
+}
+.tip small {
+  font-size: 9px;
+}
+@media (max-width: 1250px) {
+  .stage {
+    justify-content: flex-start;
+  }
+  .left {
+    width: 200px;
+  }
+  aside {
+    width: 210px;
+  }
+}
