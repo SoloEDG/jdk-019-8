@@ -5,4 +5,7 @@ export function select(id: string, multi: boolean) {
     ? doc.shapes.filter((x) => x.group === s.group).map((x) => x.id)
     : [id];
   doc.selected = multi ? [...new Set([...doc.selected, ...ids])] : ids;
+  // 焦点回到真实图形：退出重复器/副本的选择上下文
+  doc.selectedRepeater = null;
+  doc.selectedInstance = null;
 }

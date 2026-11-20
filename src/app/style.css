@@ -192,10 +192,7 @@ footer {
   padding: 0 15px;
 }
 aside {
-  width: 235px;
-  flex-shrink: 0;
-  padding: 22px;
-  border-left: 1px solid #e9e3ef;
+  width: 100%;
 }
 aside h3 {
   font-size: 12px;
@@ -258,6 +255,129 @@ aside p {
 }
 .tip small {
   font-size: 9px;
+}
+.right-rail {
+  width: 235px;
+  flex-shrink: 0;
+  padding: 22px;
+  border-left: 1px solid #e9e3ef;
+  overflow-y: auto;
+}
+.repeaters {
+  border-top: 1px solid #eee7f3;
+  padding: 12px;
+}
+.repeaters h3 {
+  font-size: 12px;
+  padding: 0 7px;
+}
+.repeater-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 12px 0;
+}
+.repeater-actions button {
+  text-align: left;
+  font-size: 11px;
+  padding: 8px 10px;
+  background: #f6f0fc;
+}
+.repeater-actions button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.repeater-item {
+  border: 1px solid #ece5f4;
+  border-radius: 8px;
+  padding: 9px 10px;
+  margin: 8px 0;
+  cursor: pointer;
+}
+.repeater-item.chosen {
+  border-color: #8055d5;
+  background: #f3edfb;
+}
+.repeater-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+}
+.repeater-head span {
+  color: #a294ae;
+}
+.repeater-meta {
+  font-size: 10px;
+  color: #a89bb2;
+  margin: 5px 0;
+}
+.repeater-meta.warn {
+  color: #c2628f;
+}
+.repeater-buttons {
+  display: flex;
+  gap: 6px;
+}
+button.mini {
+  font-size: 10px;
+  padding: 6px 8px;
+  background: #ede5fb;
+  flex: 1;
+}
+button.mini.danger {
+  background: #fbe7ef;
+  color: #b04675;
+}
+button.mini.full {
+  width: 100%;
+  margin-top: 6px;
+}
+.hint {
+  font-size: 10px;
+  color: #b0a5ba;
+  padding: 0 7px;
+}
+.repeater-props h4 {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #aa9ab5;
+  margin: 24px 0 14px;
+}
+.repeater-props label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  margin: 14px 0;
+  gap: 8px;
+}
+.repeater-props select,
+.repeater-props input[type="number"] {
+  width: 108px;
+  padding: 6px;
+  border: 1px solid #e9e3ee;
+  border-radius: 4px;
+}
+.repeater-props .meta {
+  font-size: 10px;
+  color: #9476b7;
+  background: #f6f0fc;
+  border-radius: 6px;
+  padding: 7px 9px;
+}
+.import-btn {
+  border-radius: 6px;
+  padding: 9px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+}
+.import-btn:hover {
+  background: #ede5fb;
+}
+.repeater-layer path {
+  cursor: pointer;
 }
 @media (max-width: 1250px) {
   .stage {

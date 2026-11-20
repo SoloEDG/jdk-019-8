@@ -1,5 +1,6 @@
 import { beginEdit } from "../../drawing";
 import { doc } from "../../../shared/document";
+import { pruneRepeaters } from "../../repeaters";
 export function group() {
   beginEdit();
   const id = crypto.randomUUID();
@@ -33,6 +34,8 @@ export function reorder(delta: number) {
 }
 export function remove() {
   beginEdit();
+  const removed = new Set(doc.selected);
   doc.shapes = doc.shapes.filter((s) => !doc.selected.includes(s.id));
   doc.selected = [];
+  pruneRepeaters(removed);
 }

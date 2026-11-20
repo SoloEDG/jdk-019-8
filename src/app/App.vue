@@ -16,13 +16,21 @@ import { NodeOverlay, coordinates, select } from "../features/nodes";
 import { Properties } from "../features/appearance";
 import { Layers, translateSelected } from "../features/layers";
 import { ExportBar, restore, save, storageStatus } from "../features/export";
+import {
+  RepeaterCanvas,
+  RepeaterPanel,
+  RepeaterProperties,
+  allLayouts,
+} from "../features/repeaters";
 import type { Shape } from "../shared/types";
 if (!restore()) seed();
-doc.selected = doc.shapes.length
-  ? [doc.shapes[Math.min(3, doc.shapes.length - 1)].id]
-  : [];
-watch(() => doc.shapes, save, { deep: true });
+// 恢复的存档不预设选择；种子数据自行管理初始选中
+if (doc.selected.length === 0 && doc.selectedRepeater === null) {
+  doc.selected = doc.shapes.length ? [doc.shapes[0].id] : [];
+}
+watch(() => [doc.shapes, doc.repeaters], save, { deep: true });
 const paths = computed(() => doc.shapes.map(path));
+const layouts = computed(() => allLayouts(doc.shapes, doc.repeaters));
 let drawing: Shape | undefined;
 watch(
   () => doc.tool,
@@ -55,6 +63,8 @@ function down(e: PointerEvent) {
     );
   } else if (id) {
     select(id, e.shiftKey);
+    doc.selectedInstance = null;
+    doc.selectedRepeater = null;
     if (doc.tool === "nodes") return;
     let last = p;
     const f = (ev: PointerEvent) => {
@@ -68,7 +78,10 @@ function down(e: PointerEvent) {
       () => window.removeEventListener("pointermove", f),
       { once: true },
     );
-  } else doc.selected = [];
+  } else {
+    doc.selected = [];
+    doc.selectedInstance = null;
+  }
 }
 function finish() {
   drawing = undefined;
@@ -82,13 +95,13 @@ window.addEventListener("keydown", (e) => {
   <header>
     <b class="brand">◈ forma <small>VECTOR STUDIO</small></b>
     <div>Bloom exploration <span> / Personal workspace</span></div>
-    <ExportBar :paths="paths" />
+    <ExportBar />
   </header>
   <div class="workspace">
     <div class="left">
       <h5>PROJECT <span>＋</span></h5>
       <p class="project">▣ Bloom / Artboard 01</p>
-      <Tools /><Layers />
+      <Tools /><Layers /><RepeaterPanel />
       <p class="signature">✧ Designed to explore.</p>
     </div>
     <main>
@@ -126,6 +139,7 @@ window.addEventListener("keydown", (e) => {
             :stroke-width="s.width"
             :opacity="s.opacity"
           />
+          <RepeaterCanvas :layouts="layouts" />
           <NodeOverlay />
         </svg>
       </div>
@@ -134,11 +148,17 @@ window.addEventListener("keydown", (e) => {
         ><span>{{
           doc.tool === "pen"
             ? "Click / drag to draw · Enter to finish"
-            : "Shift + click to select multiple · Drag to move"
+            : "点副本可做例外调整 · Shift + click 多选 · Drag to move"
         }}</span
-        ><span>{{ doc.selected.length }} selected</span>
+        ><span
+          >{{ doc.selected.length }} selected ·
+          {{ layouts.reduce((n, l) => n + l.slots.length, 0) }} instances</span
+        >
       </footer>
     </main>
-    <Properties />
+    <aside class="right-rail">
+      <RepeaterProperties v-if="doc.selectedRepeater || doc.selectedInstance" />
+      <Properties v-else />
+    </aside>
   </div>
 </template>
